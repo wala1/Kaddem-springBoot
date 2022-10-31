@@ -3,10 +3,9 @@ package tn.esprit.firstproject.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.firstproject.entities.Contrats;
-import tn.esprit.firstproject.reposotories.IContratsRepository;
+import tn.esprit.firstproject.repositories.IContratsRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ContratsService implements IContratsService{

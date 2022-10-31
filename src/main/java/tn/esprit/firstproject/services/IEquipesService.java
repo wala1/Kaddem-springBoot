@@ -1,7 +1,6 @@
 package tn.esprit.firstproject.services;
 
 import tn.esprit.firstproject.entities.Equipes;
-import tn.esprit.firstproject.reposotories.IEquipesRepository;
 
 import java.util.List;
 

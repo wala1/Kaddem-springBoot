@@ -3,7 +3,7 @@ package tn.esprit.firstproject.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.firstproject.entities.Etudiants;
-import tn.esprit.firstproject.reposotories.IEtudiantsRepository;
+import tn.esprit.firstproject.repositories.IEtudiantsRepository;
 
 import java.util.List;
 @Service

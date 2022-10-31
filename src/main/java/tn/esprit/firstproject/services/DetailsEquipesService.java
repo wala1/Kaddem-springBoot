@@ -2,7 +2,7 @@ package tn.esprit.firstproject.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import tn.esprit.firstproject.entities.detailsEquipes;
-import tn.esprit.firstproject.reposotories.IDetailsEquipesRepository;
+import tn.esprit.firstproject.repositories.IDetailsEquipesRepository;
 
 import java.util.List;
 

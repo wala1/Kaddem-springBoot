@@ -2,7 +2,7 @@ package tn.esprit.firstproject.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import tn.esprit.firstproject.entities.Universite;
-import tn.esprit.firstproject.reposotories.IUniversiteRepository;
+import tn.esprit.firstproject.repositories.IUniversiteRepository;
 
 import java.util.List;
 
