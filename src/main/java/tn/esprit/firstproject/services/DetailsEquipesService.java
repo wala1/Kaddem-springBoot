@@ -1,11 +1,12 @@
 package tn.esprit.firstproject.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import tn.esprit.firstproject.entities.detailsEquipes;
 import tn.esprit.firstproject.repositories.IDetailsEquipesRepository;
 
 import java.util.List;
-
+@Service
 public class DetailsEquipesService implements IDetailsEquipesService{
     private final IDetailsEquipesRepository deR;
     @Autowired

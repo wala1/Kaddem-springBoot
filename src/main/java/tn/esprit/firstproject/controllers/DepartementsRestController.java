@@ -20,8 +20,8 @@ public class DepartementsRestController {
         return  departementsService.addDepartement(d);
     }
     @PutMapping("/affect/{idDep}/{idEtud}")
-    public Departements AffectDepartementToStudent(@PathVariable("idDep") Integer idDep,@PathVariable("idEtud") Integer idEtud){
-        return departementsService.AffectDepartementToStudent(idDep,idEtud);
+    public void AffectDepartementToStudent(@PathVariable("idDep") Integer idDep,@PathVariable("idEtud") Integer idEtud){
+        departementsService.assignEtudiantToDepartement(idDep,idEtud);
     }
     @PutMapping("/update")
     public Departements updateDepartement(@RequestBody Departements d){

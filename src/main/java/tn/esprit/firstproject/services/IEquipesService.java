@@ -9,4 +9,5 @@ public interface IEquipesService{
     Equipes addEquipe(Equipes e); // ajouter l’équipe avec son détail
     Equipes updateEquipe (Equipes e);
     Equipes retrieveEquipe (Integer idEquipe);
+
 }

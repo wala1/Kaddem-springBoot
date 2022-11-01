@@ -37,4 +37,5 @@ public class EquipesService implements IEquipesService{
 
         return er.findById(idEquipe).orElse(null);
     }
+
 }
