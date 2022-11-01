@@ -1,7 +1,6 @@
 package tn.esprit.firstproject.services;
 
 import tn.esprit.firstproject.entities.Universite;
-import tn.esprit.firstproject.reposotories.IUniversiteRepository;
 
 import java.util.List;
 
