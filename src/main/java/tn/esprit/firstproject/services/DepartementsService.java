@@ -38,7 +38,7 @@ public class DepartementsService implements IDepartementsService{
     }
 
     @Override
-    public Departements affecterEtudiant(Integer idDepart,Integer idEtud) {
+    public Departements AffectDepartementToStudent(Integer idDepart,Integer idEtud) {
         Etudiants etudiant=etudiantsService.retrieveEtudiant(idEtud);
         Departements departement=retrieveDepartement(idDepart);
         etudiant.setDepartements(departement);//aff

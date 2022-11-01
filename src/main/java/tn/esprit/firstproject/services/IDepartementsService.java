@@ -9,5 +9,5 @@ public interface IDepartementsService  {
     Departements addDepartement (Departements d);
     Departements updateDepartement (Departements d);
     Departements retrieveDepartement (Integer idDepart);
-    Departements affecterEtudiant(Integer idDepart,Integer idEtud);
+    Departements AffectDepartementToStudent(Integer idDepart,Integer idEtud);
 }

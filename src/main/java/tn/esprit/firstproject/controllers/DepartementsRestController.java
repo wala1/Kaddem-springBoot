@@ -19,9 +19,13 @@ public class DepartementsRestController {
     public Departements addDepartment(@RequestBody Departements d){
         return  departementsService.addDepartement(d);
     }
-    @PutMapping("/update/{idDep}/{idEtud}")
-    public Departements updateDepartement(@PathVariable("idDep") Integer idDep,@PathVariable("idEtud") Integer idEtud){
-        return departementsService.affecterEtudiant(idDep,idEtud);
+    @PutMapping("/affect/{idDep}/{idEtud}")
+    public Departements AffectDepartementToStudent(@PathVariable("idDep") Integer idDep,@PathVariable("idEtud") Integer idEtud){
+        return departementsService.AffectDepartementToStudent(idDep,idEtud);
+    }
+    @PutMapping("/update")
+    public Departements updateDepartement(@RequestBody Departements d){
+        return departementsService.updateDepartement(d);
     }
     @GetMapping("/find/{id}")
     public Departements findDepartment(@PathVariable("id") Integer id){

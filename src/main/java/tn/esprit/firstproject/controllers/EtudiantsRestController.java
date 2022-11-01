@@ -8,7 +8,7 @@ import tn.esprit.firstproject.entities.Etudiants;
 import tn.esprit.firstproject.services.IEtudiantsService;
 import java.util.List;
 @RestController
-@RequestMapping("/etudiant")
+@RequestMapping("/students")
 @RequiredArgsConstructor
 public class EtudiantsRestController {
     private  final IEtudiantsService etudiantsService;
