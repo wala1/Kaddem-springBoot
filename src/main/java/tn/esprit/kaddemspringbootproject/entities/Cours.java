@@ -19,12 +19,12 @@ public class Cours implements Serializable {
 
  @Id
  @GeneratedValue(strategy = GenerationType.IDENTITY)
- Integer idFormation;
- String nomFormation;
- String nomFormateur;
- String   descriptionFormation;
- Float prixFormation;
- Integer nbParticipants;
+ private Integer idFormation;
+ private String nomFormation;
+ private String nomFormateur;
+ private String descriptionFormation;
+ private Float prixFormation;
+ private Integer nbParticipants;
  @Temporal(TemporalType.DATE)
  Date dateDebutFormation;
  @Temporal(TemporalType.DATE)

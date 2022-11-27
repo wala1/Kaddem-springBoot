@@ -18,10 +18,15 @@ public class Universite implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer idUniv ;
-    String nomUniv  ;
-    String emailUniv ;
-    String logoUniv ;
+    private Integer idUniv ;
+    private String nomUniv  ;
+    private String emailUniv ;
+    private String logoUniv ;
+    private Long numUniv;
+    private String lienUniv;
+    private String adresseUniv;
+    @Enumerated(EnumType.STRING)
+    private categorieUniv categorieUniv;
     @OneToMany()
     Set<Departement> departements;
     @OneToMany(mappedBy = "universite")
