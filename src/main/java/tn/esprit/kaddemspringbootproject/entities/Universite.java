@@ -6,16 +6,13 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 
 @Getter
 @Setter
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 public class Universite implements Serializable {
 
@@ -25,4 +22,8 @@ public class Universite implements Serializable {
     String nomUniv  ;
     String emailUniv ;
     String logoUniv ;
+    @OneToMany()
+    Set<Departement> departements;
+    @OneToMany(mappedBy = "universite")
+    Set<Cours> cours;
 }

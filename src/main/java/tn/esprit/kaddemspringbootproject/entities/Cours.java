@@ -15,7 +15,7 @@ import java.util.Date;
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class Formation implements Serializable {
+public class Cours implements Serializable {
 
  @Id
  @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,5 +30,7 @@ public class Formation implements Serializable {
  @Temporal(TemporalType.DATE)
  Date dateFinFormation;
  String flyer;
+ @ManyToOne()
+ Universite universite;
 
 }
