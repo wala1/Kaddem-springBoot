@@ -31,4 +31,9 @@ public class Universite implements Serializable {
     Set<Departement> departements;
     @OneToMany(mappedBy = "universite")
     Set<Cours> cours;
+
+
+    @OneToOne(mappedBy = "universite" , fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    User chefUniv ;
+
 }
