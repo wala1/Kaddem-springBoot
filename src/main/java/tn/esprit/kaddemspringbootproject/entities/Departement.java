@@ -5,11 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,4 +19,10 @@ public class Departement implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer idDepart ;
     String nomDepart ;
+
+
+
+    @OneToMany(mappedBy = "departement" , fetch = FetchType.EAGER , cascade = CascadeType.PERSIST)
+    List<User> etudiants ;
+
 }

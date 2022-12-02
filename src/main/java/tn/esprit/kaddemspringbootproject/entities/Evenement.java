@@ -9,6 +9,8 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 
 @Getter
@@ -18,14 +20,21 @@ import java.util.Date;
 public class Evenement  implements Serializable {
 
 
+ // champs métier
  @Id
  @GeneratedValue(strategy = GenerationType.IDENTITY)
  Integer idEvent;
- String descriptionEvent;
+ String themeEvent;
  @Temporal(TemporalType.DATE)
  Date dateDebutEvent;
  @Temporal(TemporalType.DATE)
- Date  dateFinEvent;
+ Date dateFinEvent;
  Integer nbParticipantMax;
- String image;
+ String affiche;
+
+ // champs de relation
+ @ManyToMany(mappedBy = "evenements" , fetch = FetchType.LAZY , cascade = CascadeType.PERSIST)
+ Set <User> etudiants ;
+
+
 }

@@ -1,9 +1,8 @@
 package tn.esprit.kaddemspringbootproject.entities;
 
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
@@ -14,8 +13,13 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Contrat implements Serializable {
+
+    // champs métier
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer idContrat ;
@@ -27,4 +31,17 @@ public class Contrat implements Serializable {
     Specialite specialite ;
     Boolean archive ;
     Integer montantContrat ;
+
+
+    // champs de relation
+
+    @ManyToOne (fetch = FetchType.LAZY , cascade = CascadeType.PERSIST)
+    Equipe equipe;
+
+    @ManyToOne (fetch = FetchType.EAGER ,cascade = CascadeType.PERSIST)
+    User etudiant ;
+
+
+
+
 }

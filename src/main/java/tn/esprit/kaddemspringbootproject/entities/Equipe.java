@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -17,5 +18,8 @@ public class Equipe implements Serializable {
     String nomEquipe ;
     @Enumerated(EnumType.STRING)
     Niveau niveau ;
+
+    @OneToMany (mappedBy = "equipe" , fetch = FetchType.LAZY , cascade =  {CascadeType.PERSIST , CascadeType.REMOVE})
+    Set<Contrat> contrats ;
 
 }
