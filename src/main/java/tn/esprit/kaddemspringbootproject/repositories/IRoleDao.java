@@ -6,6 +6,6 @@ import tn.esprit.kaddemspringbootproject.entities.Role;
 public interface IRoleDao extends JpaRepository<Role,Integer>{
 
 
-
+   Role findByRoleName(String roleName) ;
 
 }

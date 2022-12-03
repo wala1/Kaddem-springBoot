@@ -1,17 +1,17 @@
 package tn.esprit.kaddemspringbootproject.entities;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(of = {"roleName"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Role implements Serializable {
@@ -23,9 +23,7 @@ public class Role implements Serializable {
      @Enumerated(EnumType.STRING)
      RoleName roleName ;
 
-    // champs de relation
-    @ManyToOne (cascade = CascadeType.ALL , fetch = FetchType.EAGER)
-    User user ;
+
 
 
 
