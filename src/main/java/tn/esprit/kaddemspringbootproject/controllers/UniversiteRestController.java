@@ -40,4 +40,14 @@ public class UniversiteRestController {
     public void AffectUniversityToDepartment(@PathVariable("idUniversite") Integer idUniversite,@PathVariable("idDepartement") Integer idDepartement){
         universiteServices.assignUniversiteToDepartement(idUniversite,idDepartement);
     }
+    @Operation(description = "update University")
+    @PutMapping("/update")
+    public void updateUniv(@RequestBody Universite univ){
+        universiteServices.updateUniversite(univ);
+    }
+    @Operation(description = "delete")
+    @DeleteMapping("/delete/{idUniv}")
+    public void delete(@PathVariable("idUniv") Integer idUniv){
+        universiteServices.removeUniv(idUniv);
+    }
 }
