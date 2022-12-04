@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.kaddemspringbootproject.entities.Departement;
 import tn.esprit.kaddemspringbootproject.entities.Universite;
+import tn.esprit.kaddemspringbootproject.entities.categorieUniv;
 import tn.esprit.kaddemspringbootproject.repositories.IDepartementsRepository;
 import tn.esprit.kaddemspringbootproject.repositories.IUniversiteRepository;
 
@@ -50,4 +51,10 @@ public class UniversiteServices implements IUniversiteServices{
     public void removeUniv(Integer idUniv) {
         ur.deleteById(idUniv);
     }
+
+    @Override
+    public List<Universite> findUnivByCategorie(categorieUniv cat) {
+        return ur.findByCategorieUniv(cat);
+    }
+
 }

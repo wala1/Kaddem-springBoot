@@ -6,8 +6,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.kaddemspringbootproject.entities.Universite;
+import tn.esprit.kaddemspringbootproject.entities.categorieUniv;
 import tn.esprit.kaddemspringbootproject.services.IUniversiteServices;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -50,4 +52,11 @@ public class UniversiteRestController {
     public void delete(@PathVariable("idUniv") Integer idUniv){
         universiteServices.removeUniv(idUniv);
     }
+    @Operation(description ="Find universities by Categorie")
+    @GetMapping("/findByCategorie/{cat}")
+    @ResponseBody
+    public List<Universite> findUniversiteByCat(@PathVariable("cat") categorieUniv categorieUniv){
+        return universiteServices.findUnivByCategorie(categorieUniv);
+    }
+
 }
