@@ -10,4 +10,6 @@ import java.util.List;
 
 public interface IUniversiteRepository extends JpaRepository<Universite,Integer> {
     List<Universite> findByCategorieUniv(categorieUniv cat);
+    Universite findByNomUniv(String nom);
+
 }

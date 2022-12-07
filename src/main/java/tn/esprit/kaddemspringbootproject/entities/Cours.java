@@ -1,6 +1,7 @@
 package tn.esprit.kaddemspringbootproject.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,8 +30,9 @@ public class Cours implements Serializable {
  Date dateDePublication;
  private String flyer;
  @Enumerated(EnumType.STRING)
- private Option option;
+ private categorieCours categorieCours;
  @ManyToOne()
+
  Universite universite;
 
 }

@@ -1,6 +1,7 @@
 package tn.esprit.kaddemspringbootproject.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,8 +28,9 @@ public class Universite implements Serializable {
     private String adresseUniv;
     @Enumerated(EnumType.STRING)
     private categorieUniv categorieUniv;
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.PERSIST)
     Set<Departement> departements;
     @OneToMany(mappedBy = "universite")
+    @JsonIgnore
     Set<Cours> cours;
 }
