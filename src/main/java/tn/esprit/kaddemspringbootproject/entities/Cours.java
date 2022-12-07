@@ -1,6 +1,7 @@
 package tn.esprit.kaddemspringbootproject.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -19,18 +21,18 @@ public class Cours implements Serializable {
 
  @Id
  @GeneratedValue(strategy = GenerationType.IDENTITY)
- private Integer idFormation;
- private String nomFormation;
- private String nomFormateur;
- private String descriptionFormation;
- private Float prixFormation;
- private Integer nbParticipants;
+ private Integer idCours;
+ private String nomCours;
+ private String nomEnseignant;
+ private String descriptionCours;
+ private Float prixCours;
  @Temporal(TemporalType.DATE)
- Date dateDebutFormation;
- @Temporal(TemporalType.DATE)
- Date dateFinFormation;
- String flyer;
+ Date dateDePublication;
+ private String flyer;
+ @Enumerated(EnumType.STRING)
+ private categorieCours categorieCours;
  @ManyToOne()
+
  Universite universite;
 
 }
