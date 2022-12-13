@@ -1,30 +1,42 @@
 package tn.esprit.kaddemspringbootproject.entities;
 
 
-import lombok.AccessLevel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 
 @Getter
 @Setter
 @Entity
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Contrat implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer idContrat ;
+    private Integer idContrat;
+
     @Temporal(TemporalType.DATE)
-    Date dateDebutContrat ;
+    private Date dateDebutContrat;
+
     @Temporal(TemporalType.DATE)
-    Date dateFinContrat  ;
+    private Date dateFinContrat;
+
+    private Boolean archive;
+    private Integer montantContrat;
+
     @Enumerated(EnumType.STRING)
-    Specialite specialite ;
-    Boolean archive ;
-    Integer montantContrat ;
+    public Specialite specialite;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JsonIgnore
+    private User user;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JsonIgnore
+    private Equipe equipe;
 }

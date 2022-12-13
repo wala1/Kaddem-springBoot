@@ -1,23 +1,28 @@
 package tn.esprit.kaddemspringbootproject.entities;
 
-
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class DetailEquipe implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer  idDetailEquipe ;
-    Integer salle ;
-    String thematique ;
+    @Column(name="id")
+    private  Integer idDetailEquipe;
+    private Integer salle;
+    private String bloc;
+    private Integer etage;
+    private String thematique;
+
+    @OneToMany(mappedBy = "detail_equipe")
+    private Set<Equipe> equipe;
 
 }
