@@ -14,4 +14,5 @@ List<Cours> findByUniversite_IdUniv(Integer idUniv);
 List<Cours> CoursOrderByPriceASC();
 @Query("select c from Cours c order by c.prixCours desc ")
 List<Cours> CoursOrderByPriceDESC();
+List<Cours> findByPromotionNotNull();
 }

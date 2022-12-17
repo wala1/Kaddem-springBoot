@@ -20,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Tag(name="Course Management")
 @RequestMapping("cours")
+
 public class CourseRestController {
     private final ICourseServices courseServices;
     public static final String SUCCESS_URL = "pay/success";

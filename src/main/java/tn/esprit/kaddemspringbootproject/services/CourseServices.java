@@ -5,6 +5,9 @@ import com.paypal.api.payments.*;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.PayPalRESTException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.kaddemspringbootproject.entities.Cours;
 import tn.esprit.kaddemspringbootproject.entities.Universite;
@@ -19,6 +22,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CourseServices implements ICourseServices {
     private final ICoursRepository coursRepository;
     private final IUniversiteRepository universiteRepository;
@@ -112,5 +116,13 @@ public class CourseServices implements ICourseServices {
     @Override
     public List<Cours> CoursOrderByPriceDESC() {
         return coursRepository.CoursOrderByPriceDESC();
+    }
+
+    @Override
+    @Scheduled(cron = "*/15 * * * * *")
+    public void promotion() {
+        for(Cours c : coursRepository.findByPromotionNotNull()){
+            log.info("Cours : "+ c.getNomCours()+" , Promotion : "+c.getPromotion()+" % , Date debut prmotion : "+c.getDateDebutPomotion()+" , Date Fin Promption :" +c.getDateFinPomotion());
+        }
     }
 }

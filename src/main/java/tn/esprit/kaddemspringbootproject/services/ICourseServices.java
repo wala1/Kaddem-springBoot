@@ -20,5 +20,6 @@ public interface ICourseServices {
     Payment executePayment(String paymentId, String payerId) throws PayPalRESTException;
     List<Cours> CoursOrderByPriceASC();
     List<Cours> CoursOrderByPriceDESC();
+    void promotion();
 
 }
