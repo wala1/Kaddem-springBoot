@@ -3,10 +3,14 @@ package tn.esprit.kaddemspringbootproject.controllers;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.kaddemspringbootproject.entities.DetailEquipe;
 import tn.esprit.kaddemspringbootproject.entities.Equipe;
+import tn.esprit.kaddemspringbootproject.entities.User;
 import tn.esprit.kaddemspringbootproject.services.IEquipeServices;
+
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -68,4 +72,26 @@ public class EquipeRestController {
         @PathVariable("idProjet")  Integer idProjet){
         return equipeServices.addAndAssignEquipeToDetailEquipeAndToProject(equipe, idDetailEquipe, idProjet);
     }
+    @GetMapping("beneficeTotalOfEquipeBetweenTwoDate/{id}/{startDate}/{finDate}")
+    @ResponseBody
+    public float beneficeTotalOfEquipeByIdEquipeBetweenTwoDate(@PathVariable("id") Integer idEquipe,
+        @PathVariable("startDate")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
+        @PathVariable("finDate")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date finDate){
+        return equipeServices.beneficeTotalOfEquipeByIdEquipeBetweenTwoDate(idEquipe,startDate,finDate);
+    }
+
+    @GetMapping("nbrEquipeWorkOnProjectHasOneOrMoreYear/{id}")
+    @ResponseBody
+    public Integer nbrEquipeWorkOnProjectHasOneOrMoreYear(@PathVariable("id")  Integer idEquipe) {
+        return equipeServices.nbrEquipeWorkOnProjectHasOneOrMoreYear(idEquipe);
+    }
+
+    @PutMapping("/addParticipantToEquipeAndCheckNumberMax/{id}")
+    @ResponseBody
+    public void addParticipantToEquipeAndCheckNumberMax(@RequestBody  User u, @PathVariable("id")  Integer idEquipe) {
+        equipeServices.addParticipantToEquipeAndCheckNumberMax(u,idEquipe);
+    }
+
 }
+
+

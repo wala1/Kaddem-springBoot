@@ -3,10 +3,12 @@ package tn.esprit.kaddemspringbootproject.controllers;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.kaddemspringbootproject.entities.Tache;
 import tn.esprit.kaddemspringbootproject.services.ITacheServices;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -57,6 +59,26 @@ public class TacheRestController {
     @ResponseBody
     public List<Tache> getTacheByProjetId(@PathVariable("id") Integer idProjet){
         return tacheServices.getTacheByProjetId(idProjet);
+    }
+
+    @PutMapping("/addAndAssignTacheToProjet/{id}")
+    @ResponseBody
+    public Tache addAndAssignTacheToProjet(@RequestBody Tache t, @PathVariable("id")  Integer idProjet) {
+        return  tacheServices.addAndAssignTacheToProjet(t,idProjet);
+    }
+
+    @GetMapping("nbrTacheOfProjectBetweenTwoDateValide/{id}/{startDate}/{finDate}")
+    @ResponseBody
+    public Integer nbrTacheOfProjectBetweenTwoDateValide(@PathVariable("id") Integer idProjet,
+            @PathVariable("startDate")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
+            @PathVariable("finDate")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date finDate){
+        return tacheServices.nbrTacheOfProjectBetweenTwoDateValide(idProjet,startDate,finDate);
+    }
+
+    @PutMapping("/evaluerTache")
+    @ResponseBody
+    public void evaluerTache(){
+        tacheServices.evaluerTache();
     }
 
 }

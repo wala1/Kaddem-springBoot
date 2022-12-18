@@ -8,9 +8,8 @@ import tn.esprit.kaddemspringbootproject.repositories.IEquipeRepository;
 import tn.esprit.kaddemspringbootproject.repositories.IProjetRepository;
 
 import javax.transaction.Transactional;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @Service("EquipeServices")
 @RequiredArgsConstructor
@@ -81,6 +80,61 @@ public class EquipeServices implements IEquipeServices{
         e = equipeRepository.save(e);
         return e ;
     }
+
+    @Override
+    public float beneficeTotalOfEquipeByIdEquipeBetweenTwoDate(Integer idEquipe, Date startDate, Date finDate){
+        Equipe equipe = equipeRepository.findById(idEquipe).get();
+
+        float benefice=0;
+        Set<Projet> projets = equipe.getProjet();
+        for(Projet projet:projets){
+            if( (projet.getDateDebutProjet().after(startDate) && projet.getDateDebutProjet().before(finDate))
+                    || (projet.getDateFinProjet().after(startDate) && projet.getDateFinProjet().before(finDate))
+                    || (projet.getDateDebutProjet().before(startDate) &&projet.getDateFinProjet().after(finDate))
+            ) {
+                benefice = benefice + projet.getPrixProjet();
+            }
+        }
+        return benefice;
+    }
+
+    @Override
+    public Integer nbrEquipeWorkOnProjectHasOneOrMoreYear(Integer idEquipe) {
+        Equipe equipe = equipeRepository.findById(idEquipe).get();
+        Integer nbrEquipe = 0 ;
+        Set<Projet> projets = equipe.getProjet();
+        for(Projet projet :projets){
+            if(this.isProjectHasOneOrMoreYear(projet)){
+                nbrEquipe = nbrEquipe + 1;
+            }
+        }
+        return nbrEquipe;
+    }
+
+    @Override
+    public void addParticipantToEquipeAndCheckNumberMax(User u, Integer idEquipe) {
+        Equipe equipe = equipeRepository.findById(idEquipe).get();
+        if(equipe.getNbrMax() > equipe.getNbrParticipant()){
+            equipe.setNbrParticipant(equipe.getNbrParticipant()+1);
+            equipeRepository.save(equipe);
+        }
+
+    }
+
+    public Boolean isProjectHasOneOrMoreYear(Projet projet){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        Date today1 = new Date();
+
+        long debCont = projet.getDateFinProjet().getTime();
+        long timeDiff = Math.abs(debCont - today1.getTime());
+        long daysDiff = TimeUnit.DAYS.convert(timeDiff, TimeUnit.MILLISECONDS);
+        if(daysDiff >= 365){
+            return true;
+        }
+        return false;
+    }
+
 
 }
 
